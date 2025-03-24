@@ -13,7 +13,7 @@ export default function Profile() {
           <div className="flex flex-col sm:flex-row items-center">
             <img
               className="w-32 h-32 rounded-full border-4 border-white -mt-16 shadow-lg"
-              src="./src/images/ej.jpg"
+              src="./images/ej.jpg"
               alt="Profile"
             />
             <div className="mt-6 sm:mt-0 sm:ml-6 text-center sm:text-left">

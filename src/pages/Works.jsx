@@ -5,7 +5,7 @@ const projects = [
   {
     title: 'Food Website',
     description: 'A Landing Page displaying different variety of dishes and their prices',
-    image: './src/images/food website.png',
+    image: './images/food website.png',
     technologies: ['HTML', 'CSS'],
     link: 'foodwebsiteorg.netlify.app',
     github: 'https://github.com/EseigbeJoseph/Food-Website.git'
@@ -13,7 +13,7 @@ const projects = [
   {
     title: 'Tour Management App',
     description: 'A trip booking app where users can book flights and tours all in one place.',
-    image: './src/images/Tour.png',
+    image: './images/Tour.png',
     technologies: ['Express.js', 'React.js', 'Node.js', 'MongoDB'],
     link: 'https://packandgotour.netlify.app/',
     github: 'https://github.com/EseigbeJoseph/Tour-Management-project.git'
