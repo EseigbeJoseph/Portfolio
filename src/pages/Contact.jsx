@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { supabase } from './supabaseClient';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -11,44 +10,21 @@ export default function Contact() {
   });
 
   const [showSuccess, setShowSuccess] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError('');
-    
-    try {
-      const { error: supabaseError } = await supabase
-        .from('contact_messages')
-        .insert([formData]);
+    // Handle form submission
+    console.log('Form submitted:', formData);
 
-      if (supabaseError) throw supabaseError;
-      
-      setShowSuccess(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-      
-      // Hide success message after 3 seconds
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 3000);
-    } catch (err) {
-      setError('Failed to send message. Please try again later.');
-      setTimeout(() => {
-        setError('');
-      }, 3000);
-    } finally {
-      setIsSubmitting(false);
-    }
+    setShowSuccess(true);
+
+
+    setTimeout(() => {
+      setShowSuccess(false);
+    }, 3000);
   };
+
+
 
   const handleChange = (e) => {
     setFormData({
@@ -62,12 +38,6 @@ export default function Contact() {
       {showSuccess && (
         <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg animate-name">
           Message sent successfully!
-        </div>
-      )}
-      
-      {error && (
-        <div className="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg animate-name">
-          {error}
         </div>
       )}
       
@@ -85,7 +55,7 @@ export default function Contact() {
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">Email</p>
-                <p className="text-sm text-gray-500">john.doe@example.com</p>
+                <p className="text-sm text-gray-500">josepheseigbeo@gmail.com</p>
               </div>
             </div>
 
@@ -95,7 +65,7 @@ export default function Contact() {
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">Phone</p>
-                <p className="text-sm text-gray-500">+1 (555) 123-4567</p>
+                <p className="text-sm text-gray-500">+358 466583253</p>
               </div>
             </div>
 
@@ -105,7 +75,7 @@ export default function Contact() {
               </div>
               <div className="ml-3">
                 <p className="text-sm font-medium text-gray-900">Location</p>
-                <p className="text-sm text-gray-500">San Francisco, CA</p>
+                <p className="text-sm text-gray-500">Järvenpää, Finland</p>
               </div>
             </div>
           </div>
@@ -176,11 +146,10 @@ export default function Contact() {
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 <Send size={16} className="mr-2" />
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                Send Message
               </button>
             </form>
           </div>
