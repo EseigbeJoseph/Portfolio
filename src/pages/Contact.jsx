@@ -83,7 +83,7 @@ export default function Contact() {
 
         <div>
           <div className="bg-white rounded-lg shadow-sm p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6"  method="POST" netlify>
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                   Name
